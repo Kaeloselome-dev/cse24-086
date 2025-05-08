@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINGSMAN | Customer Care</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <link href="services.css" rel="stylesheet"> <!-- Custom CSS for styling -->
+</head>
+<body>
+    <!-- Navigation would go here -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a href="Home.html" class="kingsman-logo">
+                KINGSMAN<span class="clothing-text">CLOTHING</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="customercare.html">Customer Care</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="nav-link"><i class="fas fa-search"></i></a>
+                    <a href="index.html" class="nav-link"><i class="far fa-user"></i></a>
+                    <a href="Checkout.html" class="nav-link"><i class="fas fa-shopping-bag"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+   
+   
+    <!-- Services Section -->
+    <section class="py-5 py-lg-7">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">HOW CAN WE HELP?</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card p-4 text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Shipping & Delivery</h3>
+                        <p>Track your order or learn about our worldwide shipping options and delivery timelines.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card p-4 text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Returns & Exchanges</h3>
+                        <p>Our 30-day return policy and simple exchange process for your convenience.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card p-4 text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-ruler"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Size Guide</h3>
+                        <p>Comprehensive measurement guides to ensure the perfect fit every time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5 py-lg-7 bg-kingsman-cream">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title mb-5">CONTACT US</h2>
+                    
+                    <div class="mb-4">
+                        <h3 class="h5 mb-3">Customer Service</h3>
+                        <p class="mb-1"><i class="fas fa-phone-alt text-kingsman-gold me-2"></i> +1 (888) 555-1234</p>
+                        <p class="mb-1"><i class="fas fa-envelope text-kingsman-gold me-2"></i> service@kingsman.com</p>
+                        <p><i class="fas fa-clock text-kingsman-gold me-2"></i> Mon-Fri: 9AM-6PM EST</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h3 class="h5 mb-3">Bespoke Appointments</h3>
+                        <p class="mb-1"><i class="fas fa-phone-alt text-kingsman-gold me-2"></i> +1 (888) 555-5678</p>
+                        <p class="mb-1"><i class="fas fa-envelope text-kingsman-gold me-2"></i> bespoke@kingsman.com</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="h5 mb-3">Store Locations</h3>
+                        <p class="mb-1"><strong>New York</strong></p>
+                        <p class="mb-3">450 Madison Avenue, New York, NY 10022</p>
+                        
+                        <p class="mb-1"><strong>London</strong></p>
+                        <p>12 Savile Row, London W1S 3PQ</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="bg-white p-4 p-lg-5">
+                        <h3 class="h4 mb-4">Send Us a Message</h3>
+                        <form class="contact-form">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <select class="form-select" id="subject">
+                                    <option>General Inquiry</option>
+                                    <option>Order Status</option>
+                                    <option>Returns & Exchanges</option>
+                                    <option>Bespoke Appointment</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 py-lg-7">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">FREQUENTLY ASKED QUESTIONS</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="faq-item">
+                            <h3 class="h5">
+                                <button class="faq-question btn btn-link text-decoration-none text-dark p-0 w-100 text-start" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#faq1" 
+                                        aria-expanded="true">
+                                    What is your return policy?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="collapse show" data-bs-parent="#faqAccordion">
+                                <div class="pt-2">
+                                    <p>We offer a 30-day return policy for all regular purchases. Items must be in original condition with all tags attached. Bespoke items are final sale. Returns are processed within 5-7 business days after we receive your package.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="faq-item">
+                            <h3 class="h5">
+                                <button class="faq-question btn btn-link text-decoration-none text-dark p-0 w-100 text-start collapsed" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#faq2" 
+                                        aria-expanded="false">
+                                    How do I track my order?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="collapse" data-bs-parent="#faqAccordion">
+                                <div class="pt-2">
+                                    <p>Once your order ships, you'll receive a confirmation email with tracking information. You can also track your order by logging into your account on our website. For international shipments, tracking may take 24-48 hours to update after dispatch.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 3 -->
+                        <div class="faq-item">
+                            <h3 class="h5">
+                                <button class="faq-question btn btn-link text-decoration-none text-dark p-0 w-100 text-start collapsed" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#faq3" 
+                                        aria-expanded="false">
+                                    Do you offer alterations?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="collapse" data-bs-parent="#faqAccordion">
+                                <div class="pt-2">
+                                    <p>Yes, we offer complimentary basic alterations on all suits purchased directly from us within the first 30 days. For more complex alterations or after this period, our expert tailors can provide services for a reasonable fee. Contact your nearest store for details.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 4 -->
+                        <div class="faq-item">
+                            <h3 class="h5">
+                                <button class="faq-question btn btn-link text-decoration-none text-dark p-0 w-100 text-start collapsed" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#faq4" 
+                                        aria-expanded="false">
+                                    How do I care for my KINGSMAN suit?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="collapse" data-bs-parent="#faqAccordion">
+                                <div class="pt-2">
+                                    <p>We recommend dry cleaning only when necessary (2-3 times per year). Between cleanings, brush with a clothes brush and steam to refresh. Always use a wide, padded hanger to maintain shape. Store in a breathable garment bag when not in use.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 5 -->
+                        <div class="faq-item">
+                            <h3 class="h5">
+                                <button class="faq-question btn btn-link text-decoration-none text-dark p-0 w-100 text-start collapsed" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#faq5" 
+                                        aria-expanded="false">
+                                    What makes KINGSMAN suits special?
+                                </button>
+                            </h3>
+                            <div id="faq5" class="collapse" data-bs-parent="#faqAccordion">
+                                <div class="pt-2">
+                                    <p>Each KINGSMAN suit represents over 120 hours of craftsmanship using techniques perfected over a century. We use only the finest fabrics from renowned mills, hand-cut patterns for optimal drape, and employ traditional construction methods that allow the garment to mold to your body over time.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+     <footer class="kingsman-footer">
+        <div class="container">
+            <div class="row">
+                <!-- Shop Column -->
+                <div class="col-md-3 col-6 mb-4">
+                    <h5 class="footer-heading">Shop</h5>
+                    <a href="suits.html" class="footer-link">Suits</a>
+                    <a href="shirts.html" class="footer-link">Shirts</a>
+                    <a href="Ties&belts.html" class="footer-link">Ties & Pocket Squares</a>
+                    <a href="shoes.html" class="footer-link">Shoes</a>
+                    <a href="accessories.html" class="footer-link">Accessories</a>
+                </div>
+                
+                <!-- Services Column -->
+                <div class="col-md-3 col-6 mb-4">
+                    <h5 class="footer-heading">Services</h5>
+                    <a href="services.html" class="footer-link">Bespoke Tailoring</a>
+                    <a href="services.html" class="footer-link">Alterations</a>
+                    <a href="services.html" class="footer-link">Personal Styling</a>
+                </div>
+                
+                <!-- About Column -->
+                <div class="col-md-3 col-6 mb-4">
+                    <h5 class="footer-heading">About</h5>
+                    <a href="about.html" class="footer-link">Our Story</a>
+                    <a href="about.html" class="footer-link">Craftsmanship</a>
+                    <a href="about.html" class="footer-link">Careers</a>
+                    <a href="about.html" class="footer-link">Store Locations</a>
+                </div>
+                
+                <!-- Client Care Column -->
+                <div class="col-md-3 col-6 mb-4">
+                    <h5 class="footer-heading">Client Care</h5>
+                    <a href="customercare.html" class="footer-link">Contact Us</a>
+                    <a href="customercare.html" class="footer-link">Shipping & Returns</a>
+                    <a href="customercare.html" class="footer-link">Size Guide</a>
+                    <a href="customercare.html" class="footer-link">FAQ</a>
+                    <a href="services.html" class="footer-link">Book an Appointment</a>
+                </div>
+            </div>
+            
+            <!-- Social Links Section -->
+            <div class="row social-section">
+                <div class="col-12">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/accounts/login/" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/login.php/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/login" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.pinterest.com/login/" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center footer-copyright">
+                © 2025 Kingsman Clothing. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

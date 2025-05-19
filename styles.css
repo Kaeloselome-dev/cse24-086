@@ -1,5 +1,4 @@
 
-        /* === GLOBAL VARIABLES === */
         :root {
             --gold: #C6A769;  /* Premium gold accent color */
             --navy: #0A1A2F;  /* Deep navy for formal look */
@@ -7,7 +6,6 @@
             --dark-gray: #333333; /* Dark text color */
         }
         
-        /*BASE STYLES */
         * {
             margin: 0;
             padding: 0;
@@ -74,7 +72,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(10, 26, 47, 0.7), rgba(10, 26, 47, 0.7)), 
-                        url('Photos and Videos/section.jpg');
+                        url('section.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -308,7 +306,7 @@
     padding-top: 20px;
     margin-top: 20px;
 }
-        /* exp nav */
+        /* exp side nav */
         :root {
             --gold: #C6A769;
             --navy: #0A1A2F;

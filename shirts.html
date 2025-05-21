@@ -232,31 +232,46 @@
         </div>
     </footer>
       <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const cartButtons = document.querySelectorAll('.action-btn[title="Add to Cart"]');
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cartButtons = document.querySelectorAll('.fa-shopping-bag');
 
-    cartButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const productCard = button.closest('.product-card');
-            const title = productCard.querySelector('.product-title').textContent;
-            const price = productCard.querySelector('.product-price').textContent;
-            const imgSrc = productCard.querySelector('.product-img').src;
+    cartButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const productCard = btn.closest('.product-card');
+            const title = productCard.querySelector('.product-title').textContent.trim();
+            const price = productCard.querySelector('.product-price').textContent.trim();
+            const image = productCard.querySelector('.product-img').getAttribute('src');
 
-            // Create a cart item object
-            const item = { title, price, imgSrc };
+            // Create cart item object
+            const item = {
+                title,
+                price,
+                image,
+                quantity: 1
+            };
 
-            // Get existing cart or initialize a new one
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cart.push(item);
+            // Get cart from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            // Save updated cart to localStorage
-            localStorage.setItem("cart", JSON.stringify(cart));
+            // Check if item already exists
+            const existingItem = cart.find(product => product.title === title);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push(item);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
 
             // Redirect to cart page
-            window.location.href = Checkout".html";
+            window.location.href = 'Checkout.html';
         });
     });
 });
+</script>
+
+  
 </script>
 
 

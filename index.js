@@ -1,165 +1,90 @@
+// cart.js
 
+document.addEventListener("DOMContentLoaded", () => {
+    const cartItemsContainer = document.getElementById("cart-items");
+    const subtotalEl = document.getElementById("subtotal");
+    const totalEl = document.getElementById("total");
+    const emptyCartEl = document.getElementById("empty-cart");
 
-        //Checkout Page Toggle
-        let cart = [
-            {
-                id: 1,
-                image: 'Photos and Videos/dinner jacket.jpg',
-                title: 'Navy Slim Fit Suit',
-                details: 'Italian Wool | Size: 42R',
-                price: 1295,
-                quantity: 1
-            },
-            {
-                id: 2,
-                image: 'Photos and Videos/Reloj deportivo de cuarzo con correa de caucho_ elegante y versátil_ - Silver black orange.jpeg',
-                title: 'White French Cuff Shirt',
-                details: '100% Cotton | Size: 16',
-                price: 195,
-                quantity: 2
-            },
-            {
-                id: 3,
-                image: 'Photos and Videos/2024 outfit.jpeg',
-                title: 'Silk Jacquard Tie',
-                details: 'Handmade in England',
-                price: 120,
-                quantity: 1
-            }
-        ];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        // DOM Elements
-        const cartItemsEl = document.getElementById('cart-items');
-        const emptyCartEl = document.getElementById('empty-cart');
-        const subtotalEl = document.getElementById('subtotal');
-        const totalEl = document.getElementById('total');
-        const updateCartBtn = document.getElementById('update-cart');
-        const checkoutBtn = document.getElementById('checkout-btn');
+    function formatPrice(price) {
+        return "$" + price.toFixed(2);
+    }
 
-        // Render cart items
-        function renderCart() {
-            // Clear the cart
-            cartItemsEl.innerHTML = '';
-            
-            if (cart.length === 0) {
-                emptyCartEl.style.display = 'block';
-                document.querySelector('.cart-table').style.display = 'none';
-                updateCartBtn.style.display = 'none';
-            } else {
-                emptyCartEl.style.display = 'none';
-                document.querySelector('.cart-table').style.display = 'table';
-                updateCartBtn.style.display = 'block';
-                
-                // Add each item to the cart
-                cart.forEach(item => {
-                    const itemTotal = (item.price * item.quantity).toFixed(2);
-                    
-                    const tr = document.createElement('tr');
-                    tr.dataset.id = item.id;
-                    tr.innerHTML = `
-                        <td data-label="Product">
-                            <div class="product-cell">
-                                <img src="${item.image}" alt="${item.title}" class="product-img">
-                                <div>
-                                    <div class="product-title">${item.title}</div>
-                                    <div class="product-details">${item.details}</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td data-label="Price" class="price">$${item.price.toFixed(2)}</td>
-                        <td data-label="Quantity">
-                            <div class="quantity-control">
-                                <button class="quantity-btn minus" data-id="${item.id}">-</button>
-                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
-                                <button class="quantity-btn plus" data-id="${item.id}">+</button>
-                            </div>
-                        </td>
-                        <td data-label="Total" class="price">$${itemTotal}</td>
-                        <td>
-                            <button class="remove-btn" data-id="${item.id}">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    `;
-                    cartItemsEl.appendChild(tr);
-                });
-            }
-            
-            updateTotals();
+    function renderCart() {
+        cartItemsContainer.innerHTML = "";
+
+        if (cart.length === 0) {
+            emptyCartEl.style.display = "block";
+            subtotalEl.textContent = "$0.00";
+            totalEl.textContent = "$0.00";
+            return;
         }
 
-        // Update cart totals
-        function updateTotals() {
-            let subtotal = 0;
-            
-            cart.forEach(item => {
-                subtotal += item.price * item.quantity;
-            });
-            
-            subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-            totalEl.textContent = `$${subtotal.toFixed(2)}`;
-        }
+        emptyCartEl.style.display = "none";
 
-        // Event delegation for quantity buttons
-        document.addEventListener('click', function(e) {
-            // Plus button
-            if (e.target.classList.contains('plus')) {
-                const id = parseInt(e.target.dataset.id);
-                const item = cart.find(item => item.id === id);
-                if (item) {
-                    item.quantity++;
-                    renderCart();
-                }
-            }
-            
-            // Minus button
-            if (e.target.classList.contains('minus')) {
-                const id = parseInt(e.target.dataset.id);
-                const item = cart.find(item => item.id === id);
-                if (item && item.quantity > 1) {
-                    item.quantity--;
-                    renderCart();
-                }
-            }
-            
-            // Remove button
-            if (e.target.closest('.remove-btn')) {
-                const id = parseInt(e.target.closest('.remove-btn').dataset.id);
-                cart = cart.filter(item => item.id !== id);
+        let subtotal = 0;
+
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>
+                    <div style="display: flex; align-items: center;">
+                        <img src="${item.image}" alt="${item.title}" style="width: 60px; height: auto; margin-right: 10px;">
+                        <span>${item.title}</span>
+                    </div>
+                </td>
+                <td>${formatPrice(item.price)}</td>
+                <td>
+                    <input type="number" min="1" value="${item.quantity}" class="quantity-input" data-index="${index}" style="width: 60px;">
+                </td>
+                <td>${formatPrice(itemTotal)}</td>
+                <td>
+                    <button class="remove-btn" data-index="${index}" style="color: red; border: none; background: none;">&times;</button>
+                </td>
+            `;
+            cartItemsContainer.appendChild(row);
+        });
+
+        subtotalEl.textContent = formatPrice(subtotal);
+        totalEl.textContent = formatPrice(subtotal); // Assuming no tax/shipping yet
+    }
+
+    // Event delegation for quantity change
+    cartItemsContainer.addEventListener("change", (e) => {
+        if (e.target.classList.contains("quantity-input")) {
+            const index = e.target.dataset.index;
+            const newQuantity = parseInt(e.target.value);
+            if (newQuantity >= 1) {
+                cart[index].quantity = newQuantity;
+                localStorage.setItem("cart", JSON.stringify(cart));
                 renderCart();
             }
-        });
+        }
+    });
 
-        // Handle quantity input changes
-        cartItemsEl.addEventListener('change', function(e) {
-            if (e.target.classList.contains('quantity-input')) {
-                const id = parseInt(e.target.dataset.id);
-                const quantity = parseInt(e.target.value);
-                const item = cart.find(item => item.id === id);
-                
-                if (item && quantity >= 1) {
-                    item.quantity = quantity;
-                    updateTotals();
-                } else if (item) {
-                    e.target.value = item.quantity; // Reset to previous value
-                }
-            }
-        });
+    // Event delegation for remove
+    cartItemsContainer.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-btn")) {
+            const index = e.target.dataset.index;
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+    });
 
-        // Update cart button
-        updateCartBtn.addEventListener('click', function() {
-            // In a real app, you would send the updated quantities to your backend
-            alert('Cart updated successfully');
-        });
-
-        // Checkout button
-        checkoutBtn.addEventListener('click', function() {
-            // In a real app, this would redirect to checkout
-            alert('Proceeding to checkout');
-        });
-
-        // Initialize the cart
+    document.getElementById("update-cart").addEventListener("click", () => {
+        localStorage.setItem("cart", JSON.stringify(cart));
         renderCart();
+    });
+
+    renderCart();
+});
+
 
          // Enhanced filtering with smooth transitions
          document.addEventListener('DOMContentLoaded', function() {

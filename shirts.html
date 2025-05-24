@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <a class="navbar-brand" href="Home.html">KINGSMAN</a>
                 <div class="d-flex">
-                    <a href="#" class="text-white mx-3"><i class="fas fa-heart"></i></a>
+                    <a href="wishlist.html" class="text-white mx-3"><i class="fas fa-heart"></i></a>
                     <a href="Checkout.html" class="text-white"><i class="fas fa-shopping-bag"></i></a>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="product-img-container">
                     <img src="Men's Polo Shirt Golf Shirt Casual Sports Lapel Classic Short Sleeve Fashion Basic Patchwork Button Summer Regular Fit White Pink Red Navy Blue Green Polo Shirt 2025 - $21_99.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                        <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                          <button class="action-btn add-to-cart" type="button" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
 
@@ -67,7 +67,7 @@
                 <div class="product-img-container">
                     <img src="new 👕.jpg" alt="Charcoal Tailored Suit" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                           <button class="action-btn add-to-cart" type="button" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -84,7 +84,7 @@
                 <div class="product-img-container">
                     <img src="Men's Shirt Dress Shirt Button Down Shirt Non Iron Shirt Button Up Shirt Color Block Wedding Daily Light Blue Black White Light Green Long Sleeve Turndown Spring   Fall Clothing Apparel Patchwork.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                           <button class="action-btn add-to-cart" type="button" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -101,7 +101,7 @@
                 <div class="product-img-container">
                     <img src="69db167c-4032-4c99-9217-7f8495e73c3f.jpg" alt="White Dress Shirt" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                           <button class="action-btn add-to-cart" type="button" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -118,7 +118,7 @@
                 <div class="product-img-container">
                     <img src="Buy Navy Tan Regular Fit Smart Quarter Zip Polo Shirt from the Next UK online shop.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                        <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                          <button class="action-btn add-to-cart" type="button" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -135,7 +135,7 @@
                 <div class="product-img-container">
                     <img src="Check out this product on the Alibaba app_ Custom Designed Outdoor Safety Multicolor Polo Shirt Quic.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                        <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                          <button class="action-btn add-to-cart" type="button" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -152,7 +152,7 @@
                 <div class="product-img-container">
                     <img src="Men's Polo Shirt Button Collar Short Sleeve Pullover Summer Casual Sports Solid Color Striped Lapel.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                          <button class="action-btn add-to-cart" type="button" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -169,7 +169,7 @@
                 <div class="product-img-container">
                     <img src="Shirt.jpg" alt="Cufflinks" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                           <button class="action-btn add-to-cart" type="button" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -272,6 +272,38 @@
     alert(`${title} added to cart!`);
   });
 });
+        //Add to wishlist
+        
+document.querySelectorAll('.add-to-wishlist').forEach(button => {
+  button.addEventListener('click', function () {
+    const productCard = this.closest('.product-card');
+    const imageSrc = productCard.querySelector('.product-img').src;
+    const title = productCard.querySelector('.product-title').textContent;
+    const category = productCard.querySelector('.product-category').textContent;
+    const price = productCard.querySelector('.product-price').textContent;
+
+    const wishlistItem = {
+      image: imageSrc,
+      title: title,
+      category: category,
+      price: price
+    };
+
+    // Get existing wishlist from localStorage
+    const wishlist = JSON.parse(localStorage.getItem('Wishlist')) || [];
+
+    // Prevent duplicates
+    const exists = wishlist.some(item => item.title === wishlistItem.title);
+    if (!exists) {
+      wishlist.push(wishlistItem);
+      localStorage.setItem('Wishlist', JSON.stringify(wishlist));
+      alert(`${title} added to wishlist!`);
+    } else {
+      alert(`${title} is already in your wishlist.`);
+    }
+  });
+});
+
     </script>
   
 

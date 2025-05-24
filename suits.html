@@ -47,7 +47,7 @@
                 <div class="product-img-container">
                     <img src="Ternos masculinos de luxo preto elegante lapéu de lapela masculina de blazer pico mais recente (jaqueta+calça+colete) ternão masculino completo - As Picture _ S.jpeg" alt="Navy Slim Fit Suit" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                         <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -64,7 +64,7 @@
                 <div class="product-img-container">
                     <img src="Italian Brown Lapel Men Slim Suit _ Suit Wedding Business Suit Adjustable Chest Button.jpg" alt="Charcoal Tailored Suit" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -81,7 +81,7 @@
                 <div class="product-img-container">
                     <img src="dinner jacket.jpg" alt="Black Tuxedo" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -98,7 +98,7 @@
                 <div class="product-img-container">
                     <img src="Men's Dark Green Double breasted Suit, Suit for Wedding  Engagement, Prom, Groom wear and Groomsmen, Grooms, Prom Everyday Best Gift_.jpg" alt="WSuits img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                        <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                         <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -115,7 +115,7 @@
                 <div class="product-img-container">
                     <img src="Men's Wedding Suits Navy Blue Army Green Formal Summer Solid Colored Graduation Suits Tailored Fit 3 Piece Single Breasted One-button 2025 - $136_99.jpg" alt="Suits img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -132,7 +132,7 @@
                 <div class="product-img-container">
                     <img src="Aryan Deep Navy Three Piece Fitted Point Lapel Mens Suit.jpg" alt="Suits img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -149,7 +149,7 @@
                 <div class="product-img-container">
                     <img src="Tab Fashion Black Striped Point Lapel Double Breasted Men Business Suit.jpg" alt="Suits img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                        <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -166,7 +166,7 @@
                 <div class="product-img-container">
                     <img src="Lookbook_ Photo.jpeg" alt="Cufflinks" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                        <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
                     </div>
                 </div>
@@ -269,6 +269,39 @@
     alert(`${title} added to cart!`);
   });
 });
+
+    // Add to wishlist
+document.querySelectorAll('.add-to-wishlist').forEach(button => {
+  button.addEventListener('click', function () {
+    const productCard = this.closest('.product-card');
+    const imageSrc = productCard.querySelector('.product-img').src;
+    const title = productCard.querySelector('.product-title').textContent;
+    const category = productCard.querySelector('.product-category').textContent;
+    const price = productCard.querySelector('.product-price').textContent;
+
+    const wishlistItem = {
+      image: imageSrc,
+      title: title,
+      category: category,
+      price: price
+    };
+
+    // Get existing wishlist from localStorage
+    const wishlist = JSON.parse(localStorage.getItem('Wishlist')) || [];
+
+    // Prevent duplicates
+    const exists = wishlist.some(item => item.title === wishlistItem.title);
+    if (!exists) {
+      wishlist.push(wishlistItem);
+      localStorage.setItem('Wishlist', JSON.stringify(wishlist));
+      alert(`${title} added to wishlist!`);
+    } else {
+      alert(`${title} is already in your wishlist.`);
+    }
+  });
+});
+
+
     </script>
 
 

@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <a class="navbar-brand" href="Home.html">KINGSMAN</a>
                 <div class="d-flex">
-                    <a href="#" class="text-white mx-3"><i class="fas fa-heart"></i></a>
+                    <a href="wishlist.html" class="text-white mx-3"><i class="fas fa-heart"></i></a>
                     <a href="Checkout.html" class="text-white"><i class="fas fa-shopping-bag"></i></a>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                 <div class="product-img-container">
                     <img src="Women's & Men's Clothing, Shop Online Fashion (1).jpeg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                      <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -63,7 +63,7 @@
                 <div class="product-img-container">
                     <img src="stlhako.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -80,7 +80,7 @@
                 <div class="product-img-container">
                     <img src="19_99US $ _New Italian Oxford Shoes For Men Luxury Mens Patent Leather Wedding Shoes Mens Pointed Toe Dress Shoes Classic Derbies 871 - Men's Dress Shoes - AliExpress.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                        <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -97,7 +97,7 @@
                 <div class="product-img-container">
                     <img src="Men Soft Formal Business Oxfords.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -114,7 +114,7 @@
                 <div class="product-img-container">
                     <img src="PATINE SHOES 😍 Collection 🔥Goodyear Welted ⚒.jpeg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                        <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -131,7 +131,7 @@
                 <div class="product-img-container">
                     <img src="Luxury Business Oxford Leather Shoes Men Breathable Patent Leather Formal Shoes Plus Size Man Office Wedding Flats Male Black - black _ 38.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -148,7 +148,7 @@
                 <div class="product-img-container">
                     <img src="Brand_ Nunn Bush Nunn Bush Men's Barklay Canvas Plain Toe Oxford Lace Up.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                     <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -165,7 +165,7 @@
                 <div class="product-img-container">
                     <img src="Mens Business Style Formal Lace Up British Style Patent Leather Casual Shoes HOT  _ eBay.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
-                        <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                       <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
 
                     </div>
@@ -269,6 +269,38 @@
     alert(`${title} added to cart!`);
   });
 });
+         // Add to wishlist
+document.querySelectorAll('.add-to-wishlist').forEach(button => {
+  button.addEventListener('click', function () {
+    const productCard = this.closest('.product-card');
+    const imageSrc = productCard.querySelector('.product-img').src;
+    const title = productCard.querySelector('.product-title').textContent;
+    const category = productCard.querySelector('.product-category').textContent;
+    const price = productCard.querySelector('.product-price').textContent;
+
+    const wishlistItem = {
+      image: imageSrc,
+      title: title,
+      category: category,
+      price: price
+    };
+
+    // Get existing wishlist from localStorage
+    const wishlist = JSON.parse(localStorage.getItem('Wishlist')) || [];
+
+    // Prevent duplicates
+    const exists = wishlist.some(item => item.title === wishlistItem.title);
+    if (!exists) {
+      wishlist.push(wishlistItem);
+      localStorage.setItem('Wishlist', JSON.stringify(wishlist));
+      alert(`${title} added to wishlist!`);
+    } else {
+      alert(`${title} is already in your wishlist.`);
+    }
+  });
+});
+
+
     </script>
   
 

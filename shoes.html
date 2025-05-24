@@ -47,7 +47,8 @@
                     <img src="Women's & Men's Clothing, Shop Online Fashion (1).jpeg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -63,7 +64,8 @@
                     <img src="stlhako.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                      <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -79,7 +81,8 @@
                     <img src="19_99US $ _New Italian Oxford Shoes For Men Luxury Mens Patent Leather Wedding Shoes Mens Pointed Toe Dress Shoes Classic Derbies 871 - Men's Dress Shoes - AliExpress.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -95,7 +98,8 @@
                     <img src="Men Soft Formal Business Oxfords.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                      <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -111,7 +115,8 @@
                     <img src="PATINE SHOES 😍 Collection 🔥Goodyear Welted ⚒.jpeg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -127,7 +132,8 @@
                     <img src="Luxury Business Oxford Leather Shoes Men Breathable Patent Leather Formal Shoes Plus Size Man Office Wedding Flats Male Black - black _ 38.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                      <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -143,7 +149,8 @@
                     <img src="Brand_ Nunn Bush Nunn Bush Men's Barklay Canvas Plain Toe Oxford Lace Up.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                    <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -159,7 +166,8 @@
                     <img src="Mens Business Style Formal Lace Up British Style Patent Leather Casual Shoes HOT  _ eBay.jpg" alt="Shoes img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                      <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -230,6 +238,39 @@
             </div>
         </div>
     </footer>
+
+     <script>
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', function () {
+    const productCard = this.closest('.product-card');
+    const imageSrc = productCard.querySelector('.product-img').src;
+    const title = productCard.querySelector('.product-title').textContent;
+    const category = productCard.querySelector('.product-category').textContent;
+    const price = productCard.querySelector('.product-price').textContent;
+
+    const cartItem = {
+      image: imageSrc,
+      title: title,
+      category: category,
+      price: price,
+      quantity: 1  // default quantity to 1
+    };
+
+    // Get existing cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('Checkout')) || [];
+
+    // Add new item
+    cart.push(cartItem);
+
+    // Save back to localStorage with correct key & variable
+    localStorage.setItem('Checkout', JSON.stringify(cart));
+
+    // Optional: alert or UI feedback
+    alert(`${title} added to cart!`);
+  });
+});
+    </script>
+  
 
     
     <script src="index.js"></script>

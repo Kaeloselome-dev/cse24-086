@@ -82,7 +82,7 @@
                     <img src="Men's Shirt Dress Shirt Button Down Shirt Non Iron Shirt Button Up Shirt Color Block Wedding Daily Light Blue Black White Light Green Long Sleeve Turndown Spring   Fall Clothing Apparel Patchwork.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn  add-to-cart type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="action-btn  add-to-cart" type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
                     </div>
                 </div>
                 <div class="product-info">
@@ -98,7 +98,7 @@
                     <img src="69db167c-4032-4c99-9217-7f8495e73c3f.jpg" alt="White Dress Shirt" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn  add-to-cart type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="action-btn add-to-cart"  type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
                     </div>
                 </div>
                 <div class="product-info">
@@ -114,7 +114,7 @@
                     <img src="Buy Navy Tan Regular Fit Smart Quarter Zip Polo Shirt from the Next UK online shop.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn  add-to-cart type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="action-btn  add-to-cart" type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
                     </div>
                 </div>
                 <div class="product-info">
@@ -130,7 +130,7 @@
                     <img src="Check out this product on the Alibaba app_ Custom Designed Outdoor Safety Multicolor Polo Shirt Quic.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn  add-to-cart type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="action-btn  add-to-cart" type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
                     </div>
                 </div>
                 <div class="product-info">
@@ -146,7 +146,7 @@
                     <img src="Men's Polo Shirt Button Collar Short Sleeve Pullover Summer Casual Sports Solid Color Striped Lapel.jpg" alt="Shirt img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn  add-to-cart type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="action-btn  add-to-cart" type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
                     </div>
                 </div>
                 <div class="product-info">
@@ -162,7 +162,7 @@
                     <img src="Shirt.jpg" alt="Cufflinks" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn  add-to-cart type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="action-btn  add-to-cart" type="button" " title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
                     </div>
                 </div>
                 <div class="product-info">
@@ -233,47 +233,36 @@
             </div>
         </div>
     </footer>
-      <script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const cartButtons = document.querySelectorAll('.fa-shopping-bag');
+    
+    <script>
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function () {
+      const productCard = this.closest('.product-card');
+      const imageSrc = productCard.querySelector('.product-img').src;
+      const title = productCard.querySelector('.product-title').textContent;
+      const category = productCard.querySelector('.product-category').textContent;
+      const price = productCard.querySelector('.product-price').textContent;
 
-    cartButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const productCard = btn.closest('.product-card');
-            const title = productCard.querySelector('.product-title').textContent.trim();
-            const price = productCard.querySelector('.product-price').textContent.trim();
-            const image = productCard.querySelector('.product-img').getAttribute('src');
+      const cartItem = {
+        image: imageSrc,
+        title: title,
+        category: category,
+        price: price
+      };
 
-            // Create cart item object
-            const item = {
-                title,
-                price,
-                image,
-                quantity: 1
-            };
+      // Get existing cart from localStorage
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            // Get cart from localStorage
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      // Add new item
+      cart.push(cartItem);
 
-            // Check if item already exists
-            const existingItem = cart.find(product => product.title === title);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push(item);
-            }
+      // Save back to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
 
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            // Redirect to cart page
-            window.location.href = 'Checkout.html';
-        });
+      // Optional: Redirect to cart page
+      // window.location.href = 'cart.html';
     });
-});
-</script>
-
-  
+  });
 </script>
 
 

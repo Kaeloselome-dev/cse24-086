@@ -260,13 +260,13 @@
       };
 
       // Get existing cart from localStorage
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cart = JSON.parse(localStorage.getItem('Checkout')) || [];
 
       // Add new item
       cart.push(cartItem);
 
       // Save back to localStorage
-      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem('Checkout', JSON.stringify(Checkout));
 
       // Optional: Redirect to cart page
       // window.location.href = 'cart.html';

@@ -242,37 +242,38 @@
             </div>
         </div>
     </footer>
-    
     <script>
-  document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', function () {
-      const productCard = this.closest('.product-card');
-      const imageSrc = productCard.querySelector('.product-img').src;
-      const title = productCard.querySelector('.product-title').textContent;
-      const category = productCard.querySelector('.product-category').textContent;
-      const price = productCard.querySelector('.product-price').textContent;
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', function () {
+    const productCard = this.closest('.product-card');
+    const imageSrc = productCard.querySelector('.product-img').src;
+    const title = productCard.querySelector('.product-title').textContent;
+    const category = productCard.querySelector('.product-category').textContent;
+    const price = productCard.querySelector('.product-price').textContent;
 
-      const cartItem = {
-        image: imageSrc,
-        title: title,
-        category: category,
-        price: price
-      };
+    const cartItem = {
+      image: imageSrc,
+      title: title,
+      category: category,
+      price: price,
+      quantity: 1  // default quantity to 1
+    };
 
-      // Get existing cart from localStorage
-      const cart = JSON.parse(localStorage.getItem('Checkout')) || [];
+    // Get existing cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('Checkout')) || [];
 
-      // Add new item
-      cart.push(cartItem);
+    // Add new item
+    cart.push(cartItem);
 
-      // Save back to localStorage
-      localStorage.setItem('Checkout', JSON.stringify(Checkout));
+    // Save back to localStorage with correct key & variable
+    localStorage.setItem('Checkout', JSON.stringify(cart));
 
-      // Optional: Redirect to cart page
-      // window.location.href = 'cart.html';
-    });
+    // Optional: alert or UI feedback
+    alert(`${title} added to cart!`);
   });
-</script>
+});
+    </script>
+  
 
 
     <!-- Bootstrap JS Bundle with Popper -->

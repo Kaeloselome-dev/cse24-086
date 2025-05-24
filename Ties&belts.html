@@ -47,7 +47,8 @@
                     <img src="Silk tie.jpg" alt="Ties&Belts img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -63,7 +64,8 @@
                     <img src="belts.jpg" alt="Ties&Belts img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -79,7 +81,8 @@
                     <img src="lebante.jpg" alt="Ties&Belts img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -95,7 +98,8 @@
                     <img src="pocket squares.jpg" alt="Ties&Belts img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -111,7 +115,8 @@
                     <img src="Tux.jpg" alt="Ties&Belts img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -127,7 +132,8 @@
                     <img src="ties.jpg" alt="Ties&Belts img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -143,7 +149,8 @@
                     <img src="squares.jpg" alt="Ties&Belts img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                       <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -159,7 +166,9 @@
                     <img src="cufflink.jpg" alt="Ties&Belts img" class="product-img">
                     <div class="product-actions">
                         <button class="action-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                    <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+                    <button class="action-btn add-to-cart" title="Add to Cart"><i class="fas fa-shopping-bag"></i></button>
+
                     </div>
                 </div>
                 <div class="product-info">
@@ -231,6 +240,39 @@
             </div>
         </div>
     </footer>
+
+     <script>
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', function () {
+    const productCard = this.closest('.product-card');
+    const imageSrc = productCard.querySelector('.product-img').src;
+    const title = productCard.querySelector('.product-title').textContent;
+    const category = productCard.querySelector('.product-category').textContent;
+    const price = productCard.querySelector('.product-price').textContent;
+
+    const cartItem = {
+      image: imageSrc,
+      title: title,
+      category: category,
+      price: price,
+      quantity: 1  // default quantity to 1
+    };
+
+    // Get existing cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('Checkout')) || [];
+
+    // Add new item
+    cart.push(cartItem);
+
+    // Save back to localStorage with correct key & variable
+    localStorage.setItem('Checkout', JSON.stringify(cart));
+
+    // Optional: alert or UI feedback
+    alert(`${title} added to cart!`);
+  });
+});
+    </script>
+  
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

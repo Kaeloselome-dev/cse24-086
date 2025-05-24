@@ -112,6 +112,9 @@
             return;
         }
 
+        document.querySelector('.cart-table').style.display = 'table';
+        document.getElementById('empty-cart').style.display = 'none';
+
         let subtotal = 0;
 
         cartItems.forEach((item, index) => {
@@ -128,7 +131,9 @@
                     <small>${item.category}</small>
                 </td>
                 <td>${item.price}</td>
-                <td>${quantity}</td>
+                <td>
+                    <input type="number" min="1" value="${quantity}" data-index="${index}" class="form-control form-control-sm quantity-input" style="width: 70px;">
+                </td>
                 <td>$${total.toFixed(2)}</td>
                 <td><button class="btn btn-sm btn-danger" onclick="removeItem(${index})">&times;</button></td>
             `;
@@ -141,11 +146,25 @@
 
     function removeItem(index) {
         cartItems.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cartItems));
+        localStorage.setItem('Checkout', JSON.stringify(cartItems));
         renderCart();
     }
 
-    document.addEventListener('DOMContentLoaded', renderCart);
+    document.addEventListener('DOMContentLoaded', () => {
+        renderCart();
+
+        document.getElementById('update-cart').addEventListener('click', () => {
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                const index = parseInt(input.getAttribute('data-index'));
+                const value = parseInt(input.value);
+                if (value > 0) {
+                    cartItems[index].quantity = value;
+                }
+            });
+            localStorage.setItem('Checkout', JSON.stringify(cartItems));
+            renderCart();
+        });
+    });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

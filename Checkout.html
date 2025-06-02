@@ -155,7 +155,7 @@
   
 
 
-  document.getElementById('checkout-btn').addEventListener('click', function () {
+  /*document.getElementById('checkout-btn').addEventListener('click', function () {
     // Clear cart from localStorage
     localStorage.removeItem('cart');
 
@@ -164,7 +164,7 @@
     
     // Optional: Redirect to confirmation page
     // window.location.href = 'thankyou.html';
-  });
+  });*/
 
 
     const cartItems = JSON.parse(localStorage.getItem('Checkout')) || [];
@@ -235,6 +235,24 @@
             localStorage.setItem('Checkout', JSON.stringify(cartItems));
             renderCart();
         });
+        //Clears Checkout
+
+document.getElementById('checkout-btn').addEventListener('click', () => {
+    // Clear cart from localStorage
+    localStorage.removeItem('Checkout');
+
+    // Clear cartItems array
+    cartItems.length = 0;
+
+    // Re-render the cart to reflect empty state
+    renderCart();
+
+    // Show confirmation
+    alert('Thank you for your purchase, a confirmation Email will be sent for you to track your products👋.');
+});
+
+
+        
     });
     </script>
 

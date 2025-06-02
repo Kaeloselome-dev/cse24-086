@@ -152,6 +152,21 @@
 
     <!-- Cart Logic -->
     <script>
+  
+
+
+  document.getElementById('checkout-btn').addEventListener('click', function () {
+    // Clear cart from localStorage
+    localStorage.removeItem('cart');
+
+    // Show alert
+    alert('Thank you for your purchase, a confirmation Email will be sent for you to track your products👋.');
+    
+    // Optional: Redirect to confirmation page
+    // window.location.href = 'thankyou.html';
+  });
+
+
     const cartItems = JSON.parse(localStorage.getItem('Checkout')) || [];
     const cartTableBody = document.getElementById('cart-items');
     const subtotalEl = document.getElementById('subtotal');

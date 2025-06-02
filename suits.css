@@ -23,6 +23,45 @@ body {
     letter-spacing: 1px;
     font-size: 24px;
 }
+/* Nav 2 serious one*/
+.kingsman-logo {
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.clothing-text {
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--navy);
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover:after,
+.nav-link.active:after {
+    width: 100%;
+}
 
 /* Shop Header */
 .shop-header {

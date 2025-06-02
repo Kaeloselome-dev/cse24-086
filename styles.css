@@ -50,9 +50,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        #search icon {
-                color: white;
-        }
         
         .btn:hover {
             background-color: #B08D5E; /* Slightly darker gold on hover */

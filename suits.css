@@ -10,19 +10,7 @@ body {
     color: #333;
 }
 
-/* Navigation */
-.kingsman-nav {
-    background-color: var(--kingsman-navy);
-    padding: 15px 0;
-    color: var(--kingsman-gold);
-}
 
-.navbar-brand {
-    color: var(--kingsman-cream);
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 24px;
-}
 /* Nav 2 serious one*/
 .kingsman-logo {
     font-family: 'Times New Roman', serif;
